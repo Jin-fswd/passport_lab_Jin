@@ -1,7 +1,6 @@
 {
   "name": "passportdemo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"
@@ -21,11 +20,13 @@
     "express-session": "^1.17.1",
     "passport": "^0.4.1",
     "passport-github2": "^0.1.12",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "passport-oauth2": "^1.8.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.16",
     "@types/express-session": "^1.17.5",
     "@types/node": "^18.11.18"
-  }
+  },
+  "description": ""
 }
