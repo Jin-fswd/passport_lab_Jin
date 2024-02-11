@@ -4,7 +4,7 @@ import session from "express-session";
 import path from "path";
 import passportMiddleware from './middleware/passportMiddleware';
 
-const port = process.env.port || 8000;
+const port = process.env.port || 8888;
 
 const app = express();
 

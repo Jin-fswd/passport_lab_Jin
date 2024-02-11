@@ -27,6 +27,7 @@
   <body>
     <div class="container"><%- body %></div>
 
+      
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -43,5 +44,25 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function githubLoginPopup() {
+        const width = 600, height = 600;
+        const left = (screen.width / 2) - (width / 2);
+        const top = (screen.height / 2) - (height / 2);
+        const url = "/auth/github";
+        const windowName = "Github Login";
+        const windowOpts = `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, width=${width}, height=${height}, top=${top}, left=${left}`;
+        window.open(url, windowName, windowOpts);
+      }
+    </script>
+    <script>
+      window.addEventListener('message', (event) => {
+          // 여기서는 모든 출처의 메시지를 수신합니다. 실제 사용 시에는 출처를 검증하세요.
+          if (event.data === 'loginSuccess') {
+              // GitHub 로그인이 성공했다는 신호를 받았으므로, 페이지를 리디렉션하거나 UI를 업데이트
+              window.location.href = '/dashboard';
+          }
+      });
+  </script>
   </body>
 </html>
