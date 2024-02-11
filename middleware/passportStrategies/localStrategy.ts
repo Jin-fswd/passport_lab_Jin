@@ -2,8 +2,6 @@ import passport, { Profile } from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { getUserByEmailIdAndPassword, getUserById} from "../../controllers/userController";
 import { PassportStrategy } from '../../interfaces/index';
-import { VerifyCallback } from "passport-oauth2";
-import { Express } from 'express';
 
 declare global {
   namespace Express {
@@ -21,12 +19,16 @@ const localStrategy = new LocalStrategy(
     passwordField: "password",
   },
   (email, password, done) => {
-    const user = getUserByEmailIdAndPassword(email, password);
-    return user
-      ? done(null, user)
-      : done(null, false, {
-          message: "Your login details are not valid. Please try again",
+    try {
+      const user = getUserByEmailIdAndPassword(email, password);
+      if(user) {
+      done(null, user)
+      }
+    } catch (error: any) {
+      done(null, false, {
+          message: error.message, 
         });
+    }
   }
 );
 

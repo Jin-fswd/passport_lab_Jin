@@ -5,6 +5,8 @@ const getUserByEmailIdAndPassword = (email: string, password: string) => {
   if (user) {
     if (isUserValid(user, password)) {
       return user;
+    } else {
+      throw new Error(`password isn't correct`);
     }
   }
   return null;
