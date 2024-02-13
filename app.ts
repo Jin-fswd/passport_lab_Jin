@@ -33,6 +33,29 @@ app.use(express.urlencoded({ extended: true }));
 passportMiddleware(app);
 
 app.use((req, res, next) => {
+  // if(req.sessionStore.all === undefined){
+  //   throw new Error("this can't ever happen lol");
+  // } else {
+  // console.log(`hello?`)
+  // req.sessionStore.all((err, sessions) => console.log(`all sessions : ${sessions}`));
+  // }
+  console.log("hello?");
+  //if(req.sessionStore.all === undefined) throw new Error("error!!")
+  //req.sessionStore.all((err, sessions) => {console.log(sessions)})
+  if(req.sessionStore.all === undefined) {
+    throw new Error("this can not be hanppens! lol");
+  } else {
+    req.sessionStore.all((err, sessions) => {
+      if(err) {
+        console.error("세션조회중 에러발생", err)
+      } else {
+        console.log("all sessions")
+        console.log(sessions);
+        
+      }
+    })
+  }
+
   console.log(`User details are: `);
   console.log(req.user);
 
@@ -41,6 +64,8 @@ app.use((req, res, next) => {
 
   console.log(`Session details are: `);
   console.log((req.session as any).passport);
+
+  
   next();
 });
 

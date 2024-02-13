@@ -4,18 +4,21 @@ const database = [
     name: "Jimmy Smith",
     email: "jimmy123@gmail.com",
     password: "jimmy123!",
+    role: "a"
   },
   {
     id: 2,
     name: "Johnny Doe",
     email: "johnny123@gmail.com",
     password: "johnny123!",
+    role: "u"
   },
   {
     id: 3,
     name: "Jonathan Chen",
     email: "jonathan123@gmail.com",
     password: "jonathan123!",
+    role: "u"
   },
 ];
 
@@ -45,10 +48,11 @@ const userModel = {
     if (!user) {
       // 사용자가 없다면 새로운 사용자 생성
       const newUser = {
-        id: database.length + 1, // 간단한 ID 할당 방식
+        id: database.length + 1,
         name: profile.username,
         email: profile.email || `${profile.username}@github.com`, // GitHub 프로필에 이메일이 없는 경우 대체 값
         password: "", // GitHub 로그인 사용자는 비밀번호 필요 없음
+        role: "u"
       };
       database.push(newUser);
       user = newUser;

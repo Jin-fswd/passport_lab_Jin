@@ -33,6 +33,8 @@ const localStrategy = new LocalStrategy(
 );
 
 /*
+Gitlens
+better comments
 propert 'id' does not exist on type 'User'
 FIX ME (types) 😭   
 */
